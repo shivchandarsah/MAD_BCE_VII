@@ -10,7 +10,7 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import com.mobile.bce1.model.MyDatabaseHelper
 
 
 class ActivityForm : AppCompatActivity() {
@@ -58,15 +58,31 @@ class ActivityForm : AppCompatActivity() {
             // txtResultAddress.setText("Address: "+addressData + " , Gender:"+genderText)
             // txtResultEmail.setText("Email: "+emailData + " , Terms:"+acceptedTerms)
 
-            val intent = Intent(this, resultActivity::class.java).apply {
-                putExtra("name", nameData)
-                putExtra("address", addressData)
-                putExtra("email", emailData)
-                putExtra("gender", genderText)
-                putExtra("country", countryText)
-                putExtra("terms", acceptedTerms)
-            }
+            // val intent = Intent(this, resultActivity::class.java).apply {
+            //   putExtra("name", nameData)
+            //  putExtra("address", addressData)
+            //    putExtra("email", emailData)
+            //   putExtra("gender", genderText)
+            //    putExtra("country", countryText)
+            //   putExtra("terms", acceptedTerms)
+            // }
+            //startActivity(intent)
+
+            // Insert Data into the Database
+            val dbHelper = MyDatabaseHelper(this)
+            dbHelper.insterUserData(
+                nameData,
+                addressData,
+                emailData,
+                genderText,
+                countryText,
+                acceptedTerms
+            )
+
+
+            val intent = Intent(this, resultActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+        }
         }
     }
-}

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BCE 1</string>
+    <string name="app_name">My app</string>
     <string name="first_text">This is my application</string>
     <string name="second_text">This is my subtitle</string>
     <string name="third_text">My Name is:</string>
@@ -13,6 +13,10 @@
     <string name="sign">Sign Up</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="english">English</string>
+    <string name="std_mgmt">Student Management</string>
+    <string name="hlo">Hello</string>
+    <string name="nepali">Nepali</string>
 
 
     <string-array name="country">

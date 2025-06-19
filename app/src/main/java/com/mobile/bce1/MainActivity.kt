@@ -1,10 +1,12 @@
 package com.mobile.bce1
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
+import java.util.Locale
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -15,6 +17,15 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: Context?) {
+        val sharedPreferences = newBase?.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val lang = sharedPreferences?.getString("My_Lang", "en")
+        val locale = Locale(lang)
+        val config = newBase?.resources?.configuration
+        config?.setLocale(locale)
+        val context = newBase?.createConfigurationContext(config!!)
+        super.attachBaseContext(context)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
